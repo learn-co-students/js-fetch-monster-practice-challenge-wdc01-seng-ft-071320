@@ -1,7 +1,8 @@
 document.addEventListener("DOMContentLoaded", ()=> {
 
     url = "http://localhost:3000/monsters/"
-
+    const limit = 50;
+    let page = 1;
     // grab the specific nodes
     const monsterDiv = document.querySelector("#monster-container")
     const forwardBtn = document.querySelector("#forward")
@@ -29,20 +30,17 @@ document.addEventListener("DOMContentLoaded", ()=> {
     const createForm = document.querySelector("#monster-form")
     
     //GET request monsters and append to page
-    fetch(url)
-    .then(resp => resp.json())
-    .then(monsters => addFiftyMonsters(monsters))
+    function fetchMonsters(page){
+        fetch(url+`?_limit=50&_page=${page}`)
+        .then(resp => resp.json())
+        .then(monsters => addFiftyMonsters(monsters))
+    }
+
+    fetchMonsters(page)
 
     //iterate through each monster and add first 50 monsters to page
-    function addFiftyMonsters(monsters, page = 1){
-        
-        if (monsterDiv.innerHTML === ""){
-            monsters.forEach(monster => {
-                if ( monster.id <=50) {
-                    addMonster(monster)
-                }
-            })
-        }
+    function addFiftyMonsters(monsters){
+        monsters.forEach(monster => {addMonster(monster)}      )
     }
     
 
@@ -62,12 +60,20 @@ document.addEventListener("DOMContentLoaded", ()=> {
     // load next 50
     forwardBtn.addEventListener("click", ()=>{
         event.preventDefault();
-        
-        
+        page++;
+        monsterDiv.innerHTML = ""
+        fetchMonsters(page);
+
     })
 
 
     // load previous 50
+    backBtn.addEventListener("click", ()=> {
+        event.preventDefault()
+        page = page - 1;
+        monsterDiv.innerHTML = ""
+        fetchMonsters(page)
+    })
 
     // Post request for form
     createForm.addEventListener("submit", ()=> {
