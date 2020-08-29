@@ -5,14 +5,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const monsterForm = document.getElementById('add-monster-form')
     let page = 1
 
-    // const monsContainer = document.getElementById("monster-container");
-
     function fetchMonsters() {
         fetch(url + page)
             .then((res) => res.json())
             .then(monsters => getMonsters(monsters));
-
-        // debugger
     }
     fetchMonsters();
 
@@ -85,9 +81,6 @@ document.addEventListener("DOMContentLoaded", () => {
         } else
             page = page + 1
         fetchMonsters()
-
-        console.log(url + page)
-
     })
 
     let backBtn = document.getElementById("back")
@@ -98,7 +91,6 @@ document.addEventListener("DOMContentLoaded", () => {
         } else if (page === 1) {
             alert("No page to load")
         }
-        console.log(url + page)
     })
 
 });
