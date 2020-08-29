@@ -1,6 +1,5 @@
 {
-  "monsters": [
-    {
+  "monsters": [{
       "name": "Chronos",
       "age": 4005.302453418598,
       "description": "Effulgence eldritch shunned foetid. Ululate gibbering tenebrous foetid iridescence daemoniac. Stench nameless gambrel. Amorphous furtive iridescence noisome. Foetid mortal nameless.",
@@ -5999,12 +5998,7 @@
       "age": 994.3545545377854,
       "description": "Noisome cat singular fainted ululate accursed hideous loathsome. Accursed antiquarian shunned loathsome eldritch squamous immemorial. Blasphemous iridescence loathsome eldritch noisome unutterable immemorial fungus. Unutterable stench madness gibbering eldritch antediluvian unmentionable.",
       "id": 1000
-    },
-    {
-      "name": "13",
-      "age": 13,
-      "description": "131313",
-      "id": 1001
     }
+
   ]
 }
